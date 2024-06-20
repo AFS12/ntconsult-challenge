@@ -1,11 +1,13 @@
 <template>
-  <h1>Base</h1>
-  <router-view/>
+  <div>
+    Content
+</div>
 </template>
 
 <script lang="ts">
 export default {
   name: 'HomeView',
+
   data() {
     return {
     }
