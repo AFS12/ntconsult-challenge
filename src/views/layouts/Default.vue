@@ -29,12 +29,18 @@
     fluid
     class="main-content"
   >
-    <h1>Base</h1>
     <router-view/>
   </v-container>
 
-  <v-footer absolute>
-    <h1>Footer</h1>
+  <v-footer
+    absolute
+    class="footer"
+  >
+    <small>
+      © 2024 Check-in point, lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quo dolor repellat ipsam,
+      <br>
+      incidunt ex quisquam perspiciatis sed maxime corrupti ullam expedita earum iure vel, veritatis qui repudiandae.
+    </small>
   </v-footer>
 </template>
 
