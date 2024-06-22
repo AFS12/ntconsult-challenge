@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 
 .header {
+  padding: 10px 10px;
 
   .logo {
     position: relative;
@@ -15,10 +16,32 @@
       position: absolute;
       top: 12px;
       left: 60px;
+
+      @media only screen and (max-width: 768px) {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .button-text {
+    font-size: 1.0rem;
+    text-transform: capitalize;
+    margin-left: 3px;
+
+    @media only screen and (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  .button-icon {
+    font-size: 1.6rem !important;
+
+    @media only screen and (max-width: 768px) {
+      font-size: 0.7rem;
     }
   }
 }
 
-.content {
-  
+.main-content {
+  bottom: 0;
 }

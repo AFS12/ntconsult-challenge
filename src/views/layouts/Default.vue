@@ -1,6 +1,6 @@
 <template>
-  <v-toolbar>
-    <v-toolbar-title class="header">
+  <v-toolbar class="header">
+    <v-toolbar-title>
       <div
         class="logo"
         @click="$router.push({ name: 'home' })"
@@ -18,10 +18,11 @@
       </div>
     </v-toolbar-title>
 
-    <v-spacer></v-spacer>
-
-    <v-btn icon>
-      <v-icon>mdi-export</v-icon>
+    <v-btn>
+      <v-icon class="button-icon">mdi-briefcase-check-outline</v-icon>
+      <span class="button-text">
+        My reservations
+      </span>
     </v-btn>
   </v-toolbar>
   <v-container 
@@ -31,6 +32,10 @@
     <h1>Base</h1>
     <router-view/>
   </v-container>
+
+  <v-footer absolute>
+    <h1>Footer</h1>
+  </v-footer>
 </template>
 
 <script lang="ts">
