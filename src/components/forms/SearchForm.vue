@@ -133,6 +133,7 @@ export default defineComponent({
     this.searchForm = this.getSearchForm()
     this.loadLocations('')
   },
+  emits: ['search'],
   methods: {
     async validateSearchForm() {
       const formRef = this.$refs.form as { validate: () => Promise<{ valid: boolean }> }
@@ -142,8 +143,7 @@ export default defineComponent({
       }
 
       this.setSearchForm(this.searchForm)
-
-      this.$router.push({ name: 'hotelsList' })
+      this.$emit('search')
     },
     async loadLocations(event: string, limit = 5) {
       this.locationsLoading = true

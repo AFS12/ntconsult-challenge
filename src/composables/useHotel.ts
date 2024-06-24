@@ -17,18 +17,46 @@ export function useHotel() {
   }
 
   function loadLocationsOfHotelsWithLimit(city: string, limit = 10): Promise<string[]> {
-    const cities = data.map(hotel => hotel.city)
-    const loweredCity = city.toLocaleLowerCase()
+    const citiesSet = new Set<string>()
+    const loweredCity = city.toLowerCase()
 
     return new Promise((resolve) => {
       setTimeout(() => {
-        const result = cities.filter(cityList => cityList.toLocaleLowerCase().includes(loweredCity))
-          .slice(0, limit)
+        data.forEach(hotel => {
+          const hotelCity = hotel.city.toLowerCase()
+          if (hotelCity.includes(loweredCity) && !citiesSet.has(hotelCity)) {
+            citiesSet.add(hotelCity)
+          }
+        })
+
+        const result = Array.from(citiesSet).slice(0, limit)
         resolve(result)
       }, 500)
     })
   }
 
+  function getHotelById(id: number): Hotel | undefined {
+    return data.find(hotel => hotel.id === id)
+  }
 
-  return { loadRecommendedHotels, loadLocationsOfHotelsWithLimit }
+  function getHotelsBySearchForm(searchForm: { location: string; dates: string; guests: number }, limit = 10): Promise<Hotel[]> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const filteredHotels = data.filter(hotel => {
+          const matchesLocation = hotel.city.toLowerCase() === searchForm.location.toLowerCase()
+          const matchesGuests = searchForm.guests <= hotel.rooms.accommodations_per_room
+          return matchesLocation && matchesGuests
+        })
+        const limitedResults = filteredHotels.slice(0, limit)
+        resolve(limitedResults)
+      }, 1000)
+    })
+  }
+
+  return {
+    loadRecommendedHotels,
+    loadLocationsOfHotelsWithLimit,
+    getHotelById,
+    getHotelsBySearchForm,
+  }
 }

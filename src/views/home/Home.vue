@@ -10,7 +10,7 @@
         md="12"
         sm="12"
       >
-        <SearchForm/>
+        <SearchForm @search="toHotelsList()"/>
       </v-col>
       <v-spacer/>
     </v-row>
@@ -148,6 +148,11 @@ export default defineComponent({
   },
   mounted() {
     this.loadRecommendedHotels()
+  },
+  methods: {
+    toHotelsList() {
+      this.$router.push({ name: 'hotelsList' })
+    },
   },
 })
 </script>

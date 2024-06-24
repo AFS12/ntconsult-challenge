@@ -2,8 +2,8 @@
   <div class="hotel-details">
     <v-img
       :src="`/img/hotels-thumbs/${hotel.hotel_image}.jpg`"
-      height="150"
-      width="260"
+      height="200"
+      width="360"
       alt="hotel image"
       cover
       lazy-src="/img/systemLogo.png"
