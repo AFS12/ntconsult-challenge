@@ -14,7 +14,7 @@
           class="form-field-align"
           cols="12"
           lg="4"
-          md="4"
+          md="3"
           sm="12"
         >
           <v-autocomplete
@@ -47,40 +47,46 @@
         <v-col 
           class="form-field-align"
           cols="12"
-          lg="4"
-          md="4"
+          lg="2"
+          md="3"
           sm="12"
         >
-          <v-text-field
+          <v-number-input
             v-model="searchForm.guests"
-            alt="Guests and rooms"
+            controlVariant="stacked"
             variant="outlined"
-            label="Guests and rooms"
             density="compact"
+            label="Guests"
             required
-            :color="colors.navyBlue"
+            :reverse="false"
+            :min="1"
+            :max="10"
+            :hideInput="false"
+            :inset="false"
           />
         </v-col>
-      </v-row>
-      <v-row>
-        <v-spacer/>
-          <v-col class="text-center">
-            <v-btn
-              :color="colors.navyBlue"
-              class="home-form-button"
-              elevation="0"
-              @mouseover="searchHovered = true"
-              @mouseleave="searchHovered = false"
-            >
-              <span class="button-text">
-                Search
-              </span>
-              <v-icon class="button-icon">
-                mdi-magnify
-              </v-icon>
-            </v-btn>
-          </v-col>
-        <v-spacer/>
+        <v-col
+          class="text-center"
+          cols="12"
+          lg="2"
+          md="2"
+          sm="12"
+        >
+          <v-btn
+            :color="colors.navyBlue"
+            class="home-form-button"
+            elevation="0"
+            @mouseover="searchHovered = true"
+            @mouseleave="searchHovered = false"
+          >
+            <span class="button-text">
+              Search
+            </span>
+            <v-icon class="button-icon">
+              mdi-magnify
+            </v-icon>
+          </v-btn>
+        </v-col>
       </v-row>
     </v-form>
   </div>
@@ -110,7 +116,7 @@ export default defineComponent({
       searchForm: {
         location: '',
         dates: '',
-        guests: '',
+        guests: 1,
       },
     }
   },
