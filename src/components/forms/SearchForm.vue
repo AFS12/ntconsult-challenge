@@ -105,12 +105,13 @@ export default defineComponent({
   setup() {
     const { colors } = useColors()
     const { loadLocationsOfHotelsWithLimit } = useHotel()
-    const { setSearchForm } = useSearchStore()
+    const { setSearchForm, getSearchForm } = useSearchStore()
 
     return {
       colors,
       loadLocationsOfHotelsWithLimit,
       setSearchForm,
+      getSearchForm,
     }
   },
   data() {
@@ -129,6 +130,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.searchForm = this.getSearchForm()
     this.loadLocations('')
   },
   methods: {

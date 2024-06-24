@@ -78,3 +78,29 @@ body::-webkit-scrollbar-track {
 body::-webkit-scrollbar-thumb {
   background-color: $navy-blue;
 }
+
+.hotel-details {
+  margin: 0 10px;
+
+  .hotel-image {
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hotel-name {
+    font-weight: bold;
+  }
+
+  .hotel-rating {
+    display: flex;
+    
+    .rating-note {
+      margin-top: 5px !important;
+    }
+  }
+}
+
+.hotel-details-skeleton {
+  width: 260px;
+  margin: 0 10px;
+}
