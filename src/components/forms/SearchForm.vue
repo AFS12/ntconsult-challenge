@@ -121,12 +121,12 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.loadLocations('', 5)
+    this.loadLocations('')
   },
   methods: {
-    async loadLocations(event: string, limit: number) {
+    async loadLocations(event: string, limit = 5) {
       this.locationsLoading = true
-      this.loadLocationsOfHotelsWithLimit(event, 5).then((result) => {
+      this.loadLocationsOfHotelsWithLimit(event, limit).then((result) => {
         this.locations = result
       }).finally(() => {
         this.locationsLoading = false
