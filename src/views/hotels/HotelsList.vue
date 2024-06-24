@@ -8,13 +8,17 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
+import { useSearchStore } from '@/stores/searchStore'
 
 export default defineComponent({
   name: 'HotelsList',
   setup () {
+    const { getSearchForm } = useSearchStore()
     
 
-    return {}
+    return {
+      getSearchForm,
+    }
   },
 })
 </script>

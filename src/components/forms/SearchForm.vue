@@ -5,7 +5,7 @@
         Relax and choose the perfect setting for your vacation!
       </v-col>
     </v-row>
-    <v-form>
+    <v-form ref="form">
       <v-row
         class="home-form"
         dense
@@ -19,6 +19,7 @@
         >
           <v-autocomplete
             v-model="searchForm.location"
+            :rules="locationRules"
             :items="locations"
             :loading="locationsLoading"
             variant="outlined"
@@ -76,6 +77,7 @@
             :color="colors.navyBlue"
             class="home-form-button"
             elevation="0"
+            @click="validateSearchForm()"
             @mouseover="searchHovered = true"
             @mouseleave="searchHovered = false"
           >
@@ -96,16 +98,19 @@
 import { defineComponent } from 'vue'
 import { useColors } from '@/composables/useColors'
 import { useHotel } from '@/composables/useHotel'
+import { useSearchStore } from '@/stores/searchStore'
 
 export default defineComponent({
   name: 'SearchForm',
   setup() {
     const { colors } = useColors()
     const { loadLocationsOfHotelsWithLimit } = useHotel()
+    const { setSearchForm } = useSearchStore()
 
     return {
       colors,
       loadLocationsOfHotelsWithLimit,
+      setSearchForm,
     }
   },
   data() {
@@ -113,6 +118,9 @@ export default defineComponent({
       searchHovered: false,
       locations: [] as string[],
       locationsLoading: false,
+      locationRules: [
+        (v: string) => !!v || 'Location is required',
+      ],
       searchForm: {
         location: '',
         dates: '',
@@ -124,6 +132,17 @@ export default defineComponent({
     this.loadLocations('')
   },
   methods: {
+    async validateSearchForm() {
+      const formRef = this.$refs.form as { validate: () => Promise<{ valid: boolean }> }
+      const { valid } = await formRef.validate()
+      if (!valid) {
+        return
+      }
+
+      this.setSearchForm(this.searchForm)
+
+      this.$router.push({ name: 'hotelsList' })
+    },
     async loadLocations(event: string, limit = 5) {
       this.locationsLoading = true
       this.loadLocationsOfHotelsWithLimit(event, limit).then((result) => {
