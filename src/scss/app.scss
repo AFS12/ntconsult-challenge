@@ -67,6 +67,14 @@
   margin-top: 15px;
 }
 
-// body::-webkit-scrollbar {
-//   display: none;
-// }
+body::-webkit-scrollbar {
+  width: 5px;
+}
+
+body::-webkit-scrollbar-track {
+  background: $grayish-blue-40;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: $navy-blue;
+}
