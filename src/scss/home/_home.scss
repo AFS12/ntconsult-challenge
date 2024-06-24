@@ -1,0 +1,73 @@
+.home {
+  .offer-card {
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    background-color: $navy-blue;
+
+    .offer-card-description {
+      color: white;
+      font-weight: bold;
+      font-size: 1.5rem;
+      padding: 20px 0;
+
+      @media screen and (max-width: 959px) {
+        padding: 5px 0;
+      }
+    }
+
+    .offers-container {
+      display: flex;
+      overflow: auto;
+
+      .offer {
+        margin: 0 10px;
+        min-width: 250px;
+        min-height: 130px;
+        background-color: $sky-blue;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        display: flex;
+  
+        .offer-title {
+          flex: 1;
+          color: white;
+          font-weight: normal;
+          font-size: 1rem;
+          margin-left: 5px;
+        }
+      }
+    }
+
+    .offers-container::-webkit-scrollbar {
+      height: 0;
+    }
+    
+    .offers-container::-webkit-scrollbar-thumb {
+      display: none;
+    }
+  }
+
+  .hotel-carrosel-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 40px !important;
+    position: relative;
+    padding: 20px;
+    height: 520px;
+
+    .title {
+      color: white;
+      font-weight: bold;
+      font-size: 2.5rem;
+      padding: 20px 0;
+
+      @media screen and (max-width: 959px) {
+        padding: 5px 0;
+        font-size: 1.5rem;
+      }
+    }
+  }
+}

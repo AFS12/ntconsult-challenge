@@ -17,7 +17,7 @@ module.exports = {
     'quotes': ['error', 'single'],
     'semi': ['error', 'never'],
     'key-spacing': ['error', { beforeColon: false }],
-    'max-len': ['error', { code: 120, ignoreRegExpLiterals: true }],
+    'max-len': ['warn', { code: 120, ignoreRegExpLiterals: true }],
     'no-prototype-builtins': 'off',
     'brace-style': 'error',
     'space-before-blocks': 2,
