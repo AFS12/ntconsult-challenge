@@ -1,0 +1,56 @@
+.hotel-carrosel {
+  display: flex;
+  overflow: auto;
+  color: white;
+
+  .hotel-details {
+    margin: 0 10px;
+
+    .hotel-image {
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .hotel-name {
+      font-weight: bold;
+    }
+
+    .hotel-rating {
+      display: flex;
+      
+      .rating-note {
+        margin-top: 5px !important;
+      }
+    }
+  }
+
+  .hotel-details-skeleton {
+    width: 260px;
+    margin: 0 10px;
+  }
+}
+
+.hotel-carrosel-section {
+  
+  .hotel-carrosel-button-left {
+   position: absolute;
+   left: 5px;
+   top: 50%;
+   transform: translateY(-50%);
+  }
+  
+  .hotel-carrosel-button-right {
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.hotel-carrosel::-webkit-scrollbar {
+  display: none;
+}
+
+.hotel-carrosel::-webkit-scrollbar-thumb {
+  display: none;
+}

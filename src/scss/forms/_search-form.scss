@@ -1,0 +1,66 @@
+.home-form-card {
+  padding: 15px;
+  border: 1px solid $light-gray;
+  border-radius: 15px;
+
+  .home-form-title {
+    border-bottom: 1px solid $light-gray;
+  }
+
+  .home-form {
+    margin-top: 25px;
+    margin-bottom: -25px;
+    
+    @media only screen and (max-width: 959px) {
+      margin-bottom: -10px;
+    }
+
+    .form-field-align {
+      .home-form-datepicker {
+        margin-bottom: 22px;
+      }
+
+      @media only screen and (max-width: 959px) {
+        margin-bottom: -15px !important;
+      }
+    }
+  }
+
+  .home-form-button {
+    transition: 1.0s;
+    width: 50px;
+    position: relative;
+
+    .button-text {
+      transition: 1.0s;
+      transition: opacity 0.5s;
+      opacity: 0;
+    }
+
+    .button-icon {
+      transition: 0.5s;
+      font-size: 30px;
+      position: absolute;
+      top: 50%;
+      right: 50%;
+      transform: translate(50%, -50%);
+    }
+  }
+
+  .home-form-button:hover {
+    transition: 0.5s;
+    transform: scale(1.1);
+    width: 120px;
+
+    .button-text {
+      transition: 0.5s;
+      opacity: 1;
+      margin-right: 15px;
+    }
+
+    .button-icon {
+      font-size: 18px;
+      right: 25px;
+    }
+  }
+}
