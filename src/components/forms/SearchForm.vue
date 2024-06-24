@@ -37,14 +37,11 @@
           md="4"
           sm="12"
         >
-          <v-text-field
+          <VueDatePicker
+            class="home-form-datepicker"
             v-model="searchForm.dates"
-            variant="outlined"
-            alt="Dates"
-            label="Dates"
-            density="compact"
-            required
-            :color="colors.navyBlue"
+            range
+            format="dd/mm/yyyy"
           />
         </v-col>
         <v-col 

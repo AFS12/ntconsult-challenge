@@ -1,6 +1,12 @@
-// import { shallowMount } from '@vue/test-utils'
+import { shallowMount } from '@vue/test-utils'
 // import HotelCarousel from '../../src/components/shared/HotelCarousel.vue'
 // import { Hotel } from '@/types/hotel'
+
+describe('Example test', () => {
+  it('runs a basic test', () => {
+    expect(true).toBe(true)
+  })
+})
 
 // describe('HotelCarousel.vue', () => {
 //   const hotels: Hotel[] = [

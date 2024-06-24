@@ -16,6 +16,10 @@
     }
 
     .form-field-align {
+      .home-form-datepicker {
+        margin-bottom: 22px;
+      }
+
       @media only screen and (max-width: 959px) {
         margin-bottom: -15px !important;
       }
