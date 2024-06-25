@@ -5,6 +5,8 @@
 @import './home/home';
 @import './forms/search-form';
 @import './shared/hotel-carousel';
+@import './hotels-list/hotels-list';
+@import './hotels-list/hotel-card-search-list';
 
 .header {
   padding: 10px 10px;
@@ -101,6 +103,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 .hotel-details-skeleton {
-  width: 260px;
+  width: 100%;
   margin: 20px;
 }

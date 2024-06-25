@@ -39,13 +39,16 @@ export function useHotel() {
     return data.find(hotel => hotel.id === id)
   }
 
-  function getHotelsBySearchForm(searchForm: { location: string; dates: string; guests: number }, limit = 10): Promise<Hotel[]> {
+  function getHotelsBySearchForm(searchForm: { location: string; dates: string; guests: number, rooms: number }, limit = 10): Promise<Hotel[]> {
+    const guestsMedia = searchForm.guests / searchForm.rooms
+
     return new Promise((resolve) => {
       setTimeout(() => {
         const filteredHotels = data.filter(hotel => {
           const matchesLocation = hotel.city.toLowerCase() === searchForm.location.toLowerCase()
-          const matchesGuests = searchForm.guests <= hotel.rooms.accommodations_per_room
-          return matchesLocation && matchesGuests
+          const matchesGuests = guestsMedia <= hotel.rooms.accommodations_per_room
+          const matchesRooms = searchForm.rooms <= hotel.rooms.quantity
+          return matchesLocation && matchesGuests && matchesRooms
         })
         const limitedResults = filteredHotels.slice(0, limit)
         resolve(limitedResults)

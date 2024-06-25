@@ -13,7 +13,7 @@
         <v-col 
           class="form-field-align"
           cols="12"
-          lg="4"
+          lg="3"
           md="3"
           sm="12"
         >
@@ -34,8 +34,8 @@
         <v-col 
           class="form-field-align"
           cols="12"
-          lg="4"
-          md="4"
+          lg="3"
+          md="3"
           sm="12"
         >
           <VueDatePicker
@@ -49,7 +49,28 @@
           class="form-field-align"
           cols="12"
           lg="2"
-          md="3"
+          md="2"
+          sm="12"
+        >
+          <v-number-input
+            v-model="searchForm.rooms"
+            controlVariant="stacked"
+            variant="outlined"
+            density="compact"
+            label="Rooms"
+            required
+            :reverse="false"
+            :min="1"
+            :max="10"
+            :hideInput="false"
+            :inset="false"
+          />
+        </v-col>
+        <v-col 
+          class="form-field-align"
+          cols="12"
+          lg="2"
+          md="2"
           sm="12"
         >
           <v-number-input
@@ -60,7 +81,7 @@
             label="Guests"
             required
             :reverse="false"
-            :min="1"
+            :min="searchForm.rooms"
             :max="10"
             :hideInput="false"
             :inset="false"
@@ -126,12 +147,14 @@ export default defineComponent({
         location: '',
         dates: '',
         guests: 1,
+        rooms: 1,
       },
     }
   },
   mounted() {
     this.searchForm = this.getSearchForm()
     this.loadLocations('')
+    this.loadQueryParams()
   },
   emits: ['search'],
   methods: {
@@ -143,7 +166,7 @@ export default defineComponent({
       }
 
       this.setSearchForm(this.searchForm)
-      this.$emit('search')
+      this.$emit('search', this.searchForm)
     },
     async loadLocations(event: string, limit = 5) {
       this.locationsLoading = true
@@ -152,6 +175,16 @@ export default defineComponent({
       }).finally(() => {
         this.locationsLoading = false
       })
+    },
+    loadQueryParams() {
+      const query = this.$route.query
+
+      this.searchForm.location = query.location as string || 'new york'
+      this.searchForm.dates = query.dates as string || ''
+      this.searchForm.guests = parseInt(query.guests as string) || 1
+      this.searchForm.rooms = parseInt(query.rooms as string) || 1
+
+      this.setSearchForm(this.searchForm)
     },
   },
 })

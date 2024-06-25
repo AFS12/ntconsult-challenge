@@ -1,12 +1,12 @@
 <template>
-    <div class="hotel-details-skeleton">
-      <v-skeleton-loader
-        :color="colors.lavender80"
-        width="280"
-        height="300"
-        type="image, article"
-      />
-    </div>
+  <div>
+    <v-skeleton-loader
+      :color="colors.lavender80"
+      width="100%"
+      height="300"
+      type="image, article"
+    />
+  </div>
 </template>
 
 <script lang="ts">

@@ -17,20 +17,11 @@
     <v-row>
       <v-spacer/>
       <v-col
-        class="filters"
-        cols="12"
-        xl="1"
-        lg="2"
-        md="3"
-      >
-        filter
-      </v-col>
-      <v-col
         class="justify-center align-center"
         cols="12"
-        xl="5"
-        lg="6"
-        md="7"
+        xl="6"
+        lg="8"
+        md="10"
         sm="12"
       >
         <v-row v-show="!loadingHotels">
@@ -40,9 +31,11 @@
             v-for="hotel in hotels"
             :key="hotel.id"
           >
-            <CustomCard>
-              <HotelCard :hotel="hotel"/>
-            </CustomCard>
+            <HotelCardSearchList 
+              :hotel="hotel" 
+              :guests="searchForm.guests"
+              :rooms="searchForm.rooms"
+            />
           </v-col>
         </v-row>
         <v-row v-show="loadingHotels">
@@ -52,11 +45,9 @@
             :key="item"
           >
             <v-row>
-              <v-spacer/>
               <v-col>
-                <HotelCardSkeleton/>
+                <HotelCardSearchListSkeleton/>
               </v-col>
-              <v-spacer/>
             </v-row>
           </v-col>
         </v-row>
@@ -72,17 +63,15 @@ import { useSearchStore } from '@/stores/searchStore'
 import { useHotel } from '@/composables/useHotel'
 import { Hotel } from '@/types/hotel'
 import SearchForm from '@/components/forms/SearchForm.vue'
-import HotelCard from '@/components/shared/HotelCard.vue'
-import HotelCardSkeleton from '@/components/shared/HotelCardSkeleton.vue'
-import CustomCard from '@/components/shared/CustomCard.vue'
+import HotelCardSearchList from './HotelCardSearchList.vue'
+import HotelCardSearchListSkeleton from './HotelCardSearchListSkeleton.vue'
 
 export default defineComponent({
   name: 'HotelsList',
   components: {
     SearchForm,
-    HotelCard,
-    HotelCardSkeleton,
-    CustomCard,
+    HotelCardSearchListSkeleton,
+    HotelCardSearchList,
   },
   setup () {
     const { getSearchForm } = useSearchStore()
@@ -97,11 +86,13 @@ export default defineComponent({
     return {
       hotels: [] as Hotel[],
       loadingHotels: false,
+      searchForm: [] as any,
     }
   },
   mounted() {
     this.loadingHotels = true
-    this.getHotelsBySearchForm(this.getSearchForm(), 10).then((hotels) => {
+    this.searchForm = this.getSearchForm()
+    this.getHotelsBySearchForm(this.searchForm, 10).then((hotels) => {
       this.hotels = hotels as Hotel[]
     }).finally(() => {
       this.loadingHotels = false

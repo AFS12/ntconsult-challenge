@@ -1,0 +1,65 @@
+.hotel-card-search-list {
+  padding: 0 !important;
+
+  .hotel-image {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .hotel-name {
+    font-weight: bold;
+    margin-bottom: -10px;
+  }
+
+  .hotel-info {
+    padding: 20px 15px 20px 0;
+  }
+
+  .text-left {
+    position: relative;
+    height: 200px;
+    
+    .left-content {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .hotel-bonus-chip {
+      margin-bottom: 5px;
+      margin-right: 5px;
+      text-transform: capitalize;
+    }
+
+    .hotel-rating {
+      margin-top: auto;
+      display: flex;
+      
+      .rating-note {
+        margin-top: 5px !important;
+      }
+    }
+  }
+
+  .text-right {
+    position: relative;
+    height: 200px;
+    
+    .right-content {
+      position: absolute;
+      bottom: 0;
+      right: 20px;
+      
+      .hotel-price {
+        text-align: end !important;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $dark-green;
+      }
+
+      .total-price {
+        font-weight: normal;
+        font-size: 0.8rem;
+        color: $dark-green;
+      }
+    }
+  }
+}
