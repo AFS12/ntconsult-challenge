@@ -67,7 +67,7 @@ export function useHotel() {
   }
 
   function getHotelsBySearchForm(
-    searchForm: { location: string; dates: string; guests: number; rooms: number },
+    searchForm: { location: string; dates: string[]; guests: number; rooms: number },
     limit = 10,
     orderBy: OrderBy = 0,
     searchedHotels: Hotel[] = []

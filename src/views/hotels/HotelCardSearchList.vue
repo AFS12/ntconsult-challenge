@@ -99,8 +99,12 @@
                 Into {{ rooms }} room(s)
               </small>
               <br>
+              <small>
+                Per {{ days }} days
+              </small>
+              <br>
               <small class="total-price">
-                Total: R${{ hotel.price_per_night * rooms }}
+                Total: R${{ totalPrice }}
               </small>
             </section>
           </v-col>
@@ -157,6 +161,10 @@ export default defineComponent({
       type: Number,
       default: 1,
     },
+    dates: {
+      type: Array as PropType<string[]>,
+      default: [] as string[],
+    },
   },
   data() {
     return {
@@ -173,6 +181,19 @@ export default defineComponent({
   watch: {
     compare() {
       this.compareHotels(this.hotel)
+    },
+  },
+  computed: {
+    days() {
+      if (this.dates == null || this.dates.length === 0) return 1
+
+      const startDate = new Date(this.dates[0]).getTime()
+      const endDate = new Date(this.dates[1]).getTime()
+      const diffTime = Math.abs(endDate - startDate)
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    },
+    totalPrice() {
+      return (this.hotel.price_per_night * this.rooms) * this.days
     },
   },
   methods: {

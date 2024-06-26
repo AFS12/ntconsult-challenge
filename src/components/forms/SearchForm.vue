@@ -42,7 +42,8 @@
             class="home-form-datepicker"
             v-model="searchForm.dates"
             range
-            format="dd/mm/yyyy"
+            format="dd/MM/yyyy"
+            :min-date="new Date()"
           />
         </v-col>
         <v-col 
@@ -145,7 +146,7 @@ export default defineComponent({
       ],
       searchForm: {
         location: '',
-        dates: '',
+        dates: [] as string[],
         guests: 1,
         rooms: 1,
       },
@@ -180,7 +181,7 @@ export default defineComponent({
       const query = this.$route.query
 
       this.searchForm.location = query.location as string || 'new york'
-      this.searchForm.dates = query.dates as string || ''
+      this.searchForm.dates = query.dates as string[] || [] as string[]
       this.searchForm.guests = parseInt(query.guests as string) || 1
       this.searchForm.rooms = parseInt(query.rooms as string) || 1
 

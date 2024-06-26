@@ -68,6 +68,7 @@
               :hotel="hotel" 
               :guests="searchForm.guests"
               :rooms="searchForm.rooms"
+              :dates="searchForm.dates"
               @compare="addToCompare($event)"
             />
           </v-col>
