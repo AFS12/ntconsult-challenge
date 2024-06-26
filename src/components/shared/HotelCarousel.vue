@@ -35,13 +35,13 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { Hotel } from '@/types/hotel'
 import { useColors } from '@/composables/useColors'
 import HotelCard from '@/components/shared/HotelCard.vue'
 import HotelCardSkeleton from '@/components/shared/HotelCardSkeleton.vue'
 
-export default {
+export default defineComponent({
   props: {
     hotels: {
       type: Array as PropType<Hotel[]>,
@@ -81,5 +81,5 @@ export default {
       }
     },
   },
-}
+})
 </script>

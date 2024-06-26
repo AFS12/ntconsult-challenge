@@ -1,8 +1,28 @@
 .hotel-card-search-list {
-  padding: 0 !important;
+
+  @media screen and (min-width: 600px) {
+    padding: 0 !important;
+  }
 
   .hotel-image {
     border-radius: 14px 0 0 14px;
+  }
+
+  .hotel-image-container {
+    @media screen and (max-width: 599px) {
+      display: none;
+    }
+  }
+
+  .hotel-image-container-mobile {
+
+    @media screen and (min-width: 599px) {
+      display: none;
+    }
+
+    .hotel-image {
+      border-radius: 14px 14px 14px 14px !important;
+    }
   }
 
   .hotel-name {
@@ -12,6 +32,21 @@
 
   .hotel-info {
     padding: 20px 15px 20px 0;
+    position: relative;
+
+    @media screen and (max-width: 599px) {
+      padding: 20px 15px 20px 20px;
+    }
+
+    .compare-checkbox {
+      position: absolute;
+      top: 10px;
+      right:  20px;
+
+      .v-label {
+        margin-left: -5px;
+      }
+    }
   }
 
   .text-left {
