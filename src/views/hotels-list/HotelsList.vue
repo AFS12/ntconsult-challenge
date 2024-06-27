@@ -72,7 +72,7 @@
               :dates="searchForm.dates"
               :compareListLength="compareList.length"
               @compare="addToCompare($event)"
-              @click="console.log('dishgfyusd')"
+              @click="toHotelDetails( hotel.id )"
             />
           </v-col>
         </v-row>
@@ -187,6 +187,9 @@ export default defineComponent({
     },
   },
   methods: {
+    toHotelDetails(hotelId: number) {
+      this.$router.push({ name: 'hotelDetails', params: { id: hotelId }})
+    },
     search(search: any) {
       this.$router.push({ name: 'hotelsList', query: {
         ...search,
