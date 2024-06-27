@@ -5,6 +5,7 @@
 @import './home/home';
 @import './forms/search-form';
 @import './shared/hotel-carousel';
+@import './shared/hotel-compare';
 @import './hotels-list/hotels-list';
 @import './hotels-list/hotel-card-search-list';
 
@@ -106,4 +107,10 @@ body::-webkit-scrollbar-thumb {
 .hotel-details-skeleton {
   width: 100%;
   margin: 20px;
+}
+
+.hotel-bonus-chip {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  text-transform: capitalize;
 }

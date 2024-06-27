@@ -48,10 +48,15 @@
         </small>
         <v-checkbox
           v-model="compare"
-          label="Compare" 
+          label="Compare"
           class="compare-checkbox"
           :color="colors.navyBlue"
+          :disabled="disableCompare"
+          @click.stop
         />
+        <span :style="disableCompare ? compareStyle : 'display: none'">
+          Only compare up to 5 hotels
+        </span>
         <v-row>
           <v-col
             cols="6"
@@ -165,10 +170,26 @@ export default defineComponent({
       type: Array as PropType<string[]>,
       default: [] as string[],
     },
+    compareListLength: {
+      type: Number,
+      default: 0,
+    },
   },
   data() {
     return {
       compare: false,
+      compareLimit: false,
+      compareStyle: {
+        display: 'block',
+        position: 'absolute',
+        top: '55px',
+        right: '20px',
+        color: '#fff',
+        backgroundColor: '#4682B4B3',
+        padding: '5px',
+        fontSize: '12px',
+        borderRadius: '5px',
+      },
     }
   },
   setup () {
@@ -194,6 +215,9 @@ export default defineComponent({
     },
     totalPrice() {
       return (this.hotel.price_per_night * this.rooms) * this.days
+    },
+    disableCompare() {
+      return this.compareListLength >= 5 && !this.compare
     },
   },
   methods: {

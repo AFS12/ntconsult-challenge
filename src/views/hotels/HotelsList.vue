@@ -40,6 +40,7 @@
             :disabled="compareList.length < 2"
             :color="colors.navyBlue"
             elevation="0"
+            @click="compareDialog = true"
           >
             Compare
           </v-btn>
@@ -69,7 +70,9 @@
               :guests="searchForm.guests"
               :rooms="searchForm.rooms"
               :dates="searchForm.dates"
+              :compareListLength="compareList.length"
               @compare="addToCompare($event)"
+              @click="console.log('dishgfyusd')"
             />
           </v-col>
         </v-row>
@@ -104,6 +107,18 @@
       <v-spacer/>
     </v-row>
   </section>
+  <v-dialog
+    v-model="compareDialog"
+    max-width="1200px"
+    transition="dialog-transition"
+    :fullscreen="isMobile"
+  >
+    <CompareHotels
+      :hotels="compareList"
+      :searchForm="searchForm"
+      @close="compareDialog = false"
+    />
+  </v-dialog>
 </template>
 
 <script lang="ts">
@@ -115,6 +130,7 @@ import { Hotel } from '@/types/hotel'
 import SearchForm from '@/components/forms/SearchForm.vue'
 import HotelCardSearchList from './HotelCardSearchList.vue'
 import HotelCardSearchListSkeleton from './HotelCardSearchListSkeleton.vue'
+import CompareHotels from './CompareHotels.vue'
 
 type OrderBy = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -124,6 +140,7 @@ export default defineComponent({
     SearchForm,
     HotelCardSearchListSkeleton,
     HotelCardSearchList,
+    CompareHotels,
   },
   setup () {
     const { getSearchForm } = useSearchStore()
@@ -146,6 +163,7 @@ export default defineComponent({
       searchForm: [] as any,
       compareList: [] as Hotel[],
       orderBy: 0 as OrderBy,
+      compareDialog: false,
     }
   },
   mounted() {
@@ -159,6 +177,15 @@ export default defineComponent({
       this.search(this.searchForm)
     },
   },
+  computed: {
+    isMobile() {
+      const userAgent = navigator.userAgent || navigator.vendor
+      const isMobileUserAgent = /android|iphone|ipad|ipod|blackberry|iemobile|opera mini/i.test(userAgent)
+      const isSmallScreen = window.innerWidth <= 800
+
+      return isMobileUserAgent || isSmallScreen
+    },
+  },
   methods: {
     search(search: any) {
       this.$router.push({ name: 'hotelsList', query: {
@@ -167,6 +194,7 @@ export default defineComponent({
       this.hotels = []
       this.loadingHotels = true
       this.noMoreHotels = false
+      this.compareList = []
       this.getHotelsBySearchForm(this.getSearchForm(), 10, this.orderBy).then((hotels) => {
         this.hotels = hotels as Hotel[]
         
