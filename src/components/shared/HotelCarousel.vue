@@ -10,63 +10,17 @@
     <v-icon size="x-large">mdi-chevron-left</v-icon>
   </v-btn>
   <section class="hotel-carrosel">
-    <div
-      class="hotel-details"
+    <HotelCard 
       v-for="hotel in hotels"
       :key="hotel.id"
-    >
-      <v-img
-        :src="`/img/hotels-thumbs/${hotel.hotel_image}.jpg`"
-        height="150"
-        width="260"
-        alt="hotel image"
-        cover
-        lazy-src="/img/systemLogo.png"
-        class="hotel-image"
-      />
-      <small class="hotel-city">
-        {{ hotel.city }}
-      </small>
-      <h3 class="hotel-name">
-        {{ hotel.hotel_name }}
-      </h3>
-      <div class="hotel-rating">
-        <v-rating
-          v-model="hotel.rating.note"
-          disabled
-          :active-color="colors.mintGreen"
-          half-increments
-          density="compact"
-          size="small"
-        />
-        <small class="rating-note">
-          ({{ hotel.rating.quantity_reviews }}) reviews
-        </small>
-      </div>
-      <h3>
-        R${{ hotel.price_per_night }}
-        <small>
-          per night
-        </small>
-      </h3>
-    </div>
-  </section>
-  <section
-    class="hotel-carrosel"
-    v-show="hotels.length === 0"
-  >
-    <div
+      :hotel="hotel"
+      v-show="hotels.length > 0"
+    />
+    <HotelCardSkeleton
+      v-show="hotels.length === 0"
       v-for="item in 10"
-      class="hotel-details-skeleton"
       :key="item"
-    >
-      <v-skeleton-loader
-        :color="colors.lavender80"
-        width="260"
-        height="260"
-        type="image, article"
-      />
-    </div>
+    />
   </section>
   <v-btn
     :color="colors.lavender80"
@@ -81,11 +35,13 @@
 </template>
 
 <script lang="ts">
-import { PropType } from 'vue'
+import { defineComponent, PropType } from 'vue'
 import { Hotel } from '@/types/hotel'
 import { useColors } from '@/composables/useColors'
+import HotelCard from '@/components/shared/HotelCard.vue'
+import HotelCardSkeleton from '@/components/shared/HotelCardSkeleton.vue'
 
-export default {
+export default defineComponent({
   props: {
     hotels: {
       type: Array as PropType<Hotel[]>,
@@ -99,7 +55,10 @@ export default {
       colors,
     }
   },
-
+  components: {
+    HotelCard,
+    HotelCardSkeleton,
+  },
   methods: {
     scrollCarousel (direction: string) {
       const carousel = document.querySelector('.hotel-carrosel') as HTMLElement
@@ -122,5 +81,5 @@ export default {
       }
     },
   },
-}
+})
 </script>

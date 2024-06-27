@@ -1,0 +1,89 @@
+.compare-hotels-container {
+  display: flex;
+  overflow: auto;
+
+  .compare-hotel-card {
+    padding: 0 0 10px 0;
+    border-radius: 0;
+    width: 230px;
+
+    .border-bottom {
+      border-bottom: 1px solid $light-gray;
+    }
+
+    .compare-hotel-info {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 10px;
+    }
+
+    .hotel-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      min-height: 60px;
+    }
+  
+    .hotel-rating {
+      display: grid;
+      padding: 10px 0;
+      
+      .rating-note {
+        margin-top: -25px !important;
+      }
+    }
+
+    .hotel-benefits {
+      box-sizing: border-box;
+      padding: 10px 0;
+      height: 110px;
+    }
+
+    .hotel-price {
+      padding: 10px 0;
+
+      
+      small {
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: $dark-green;
+      }
+    }
+
+    .total-price {
+      display: inline;
+      margin-top: -10px;
+      margin-bottom: -10px;
+    }
+  }
+
+  .compare-hotel-card:first-child {
+    border-radius: 10px 0 0 10px;
+
+    .hotel-image {
+      border-radius: 10px 0 0 0 !important;
+    }
+  }
+
+  .compare-hotel-card:last-child {
+    border-radius: 0 10px 10px 0;
+
+    .hotel-image {
+      border-radius: 0 10px 0 0 !important;
+    }
+  }
+}
+
+.compare-hotels-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.compare-hotels-container::-webkit-scrollbar-track {
+  background: $grayish-blue-40;
+  border-radius: 5px;
+}
+
+.compare-hotels-container::-webkit-scrollbar-thumb {
+  background-color: $navy-blue;
+  border-radius: 5px;
+}

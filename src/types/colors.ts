@@ -3,6 +3,7 @@ export interface Colors {
   aqua: string;
   turquoise: string;
   mintGreen: string;
+  darkGreen: string;
   lavender: string;
   lavender80: string;
   navyBlue: string;

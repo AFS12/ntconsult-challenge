@@ -13,7 +13,7 @@ module.exports = {
     ecmaVersion: 2020,
   },
   rules: {
-    'indent': ['error', 2],
+    'indent': ['warn', 2],
     'quotes': ['error', 'single'],
     'semi': ['error', 'never'],
     'key-spacing': ['error', { beforeColon: false }],

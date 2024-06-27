@@ -5,6 +5,9 @@
 @import './home/home';
 @import './forms/search-form';
 @import './shared/hotel-carousel';
+@import './shared/hotel-compare';
+@import './hotels-list/hotels-list';
+@import './hotels-list/hotel-card-search-list';
 
 .header {
   padding: 10px 10px;
@@ -55,6 +58,7 @@
 }
 
 .footer {
+  margin-top: 20px;
   border-top: 1px solid $light-gray !important;
   bottom: 0;
 }
@@ -77,4 +81,36 @@ body::-webkit-scrollbar-track {
 
 body::-webkit-scrollbar-thumb {
   background-color: $navy-blue;
+}
+
+.hotel-details {
+  margin: 0 10px;
+
+  .hotel-image {
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .hotel-name {
+    font-weight: bold;
+  }
+
+  .hotel-rating {
+    display: flex;
+    
+    .rating-note {
+      margin-top: 5px !important;
+    }
+  }
+}
+
+.hotel-details-skeleton {
+  width: 100%;
+  margin: 20px;
+}
+
+.hotel-bonus-chip {
+  margin-bottom: 5px;
+  margin-right: 5px;
+  text-transform: capitalize;
 }

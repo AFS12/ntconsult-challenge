@@ -1,0 +1,94 @@
+.hotel-card-search-list {
+
+  @media screen and (min-width: 600px) {
+    padding: 0 !important;
+  }
+
+  .hotel-image {
+    border-radius: 14px 0 0 14px;
+  }
+
+  .hotel-image-container {
+    @media screen and (max-width: 599px) {
+      display: none;
+    }
+  }
+
+  .hotel-image-container-mobile {
+
+    @media screen and (min-width: 599px) {
+      display: none;
+    }
+
+    .hotel-image {
+      border-radius: 14px 14px 14px 14px !important;
+    }
+  }
+
+  .hotel-name {
+    font-weight: bold;
+    margin-bottom: -10px;
+  }
+
+  .hotel-info {
+    padding: 20px 15px 20px 0;
+    position: relative;
+
+    @media screen and (max-width: 599px) {
+      padding: 20px 15px 20px 20px;
+    }
+    
+    .compare-checkbox {
+      position: absolute;
+      top: 10px;
+      right:  20px;
+
+      .v-label {
+        margin-left: -5px;
+      }
+    }
+  }
+
+  .text-left {
+    position: relative;
+    height: 200px;
+    
+    .left-content {
+      position: absolute;
+      bottom: 0;
+    }
+
+    .hotel-rating {
+      margin-top: auto;
+      display: flex;
+      
+      .rating-note {
+        margin-top: 5px !important;
+      }
+    }
+  }
+
+  .text-right {
+    position: relative;
+    height: 200px;
+    
+    .right-content {
+      position: absolute;
+      bottom: 0;
+      right: 20px;
+      
+      .hotel-price {
+        text-align: end !important;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: $dark-green;
+      }
+
+      .total-price {
+        font-weight: normal;
+        font-size: 0.8rem;
+        color: $dark-green;
+      }
+    }
+  }
+}
