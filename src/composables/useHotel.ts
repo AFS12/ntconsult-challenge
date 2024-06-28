@@ -62,8 +62,13 @@ export function useHotel() {
     })
   }
 
-  function getHotelById(id: number): Hotel | undefined {
-    return data.find(hotel => hotel.id === id)
+  function getHotelById(id: number): Promise<Hotel> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        const hotel = data.find(hotel => hotel.id === id) as Hotel
+        resolve(hotel)
+      }, 2000)
+    })
   }
 
   function getHotelsBySearchForm(

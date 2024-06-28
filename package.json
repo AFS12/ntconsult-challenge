@@ -17,11 +17,13 @@
     "roboto-fontface": "*",
     "vue": "^3.2.13",
     "vue-router": "^4.0.3",
+    "vue-the-mask": "^0.11.1",
     "vuetify": "^3.5.10",
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
+    "@types/vue-the-mask": "^0.11.5",
     "@types/webfontloader": "^1.0.0",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
