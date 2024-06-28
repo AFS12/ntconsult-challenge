@@ -41,6 +41,7 @@
           <VueDatePicker
             class="home-form-datepicker"
             v-model="searchForm.dates"
+            placeholder="Select Date"
             range
             format="dd/MM/yyyy"
             :min-date="new Date()"
