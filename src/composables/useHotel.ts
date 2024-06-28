@@ -2,6 +2,11 @@ import { Hotel } from '@/types/hotel'
 import data from '@/assets/ntconsultmockdata'
 import { useHotelStore } from '@/stores/hotelsStore'
 
+/**
+ * Esse composable foi criado para simular uma API,
+ * trazendo os dados a partir de um arquivo de mock (ntconsultmockdata.ts),
+ * permitindo a simulação de um fluxo de carregamento com delay no retorno.
+ */
 export function useHotel() {
   const store = useHotelStore()
   const hotels = store.hotels

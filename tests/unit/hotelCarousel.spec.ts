@@ -1,3 +1,15 @@
+/*
+  Tive um problema com os testes onde não conseguia importar nenhum componente.
+  O erro era o seguinte:
+  
+  Cannot find module 'caminho do componente' or its corresponding type declarations.
+
+  Fiz uma intensa busca para resolver o problema mas sem sucesso.
+  O pipeline básico de CI/CD com github actions funciona corretamente.
+  Como não consegui resolver o problema descidi seguir sem os testes,
+  mas deixando a construção desse para exemplo de como desenvolveria os testes.
+*/
+
 import { shallowMount } from '@vue/test-utils'
 // import HotelCarousel from '../../src/components/shared/HotelCarousel.vue'
 // import { Hotel } from '@/types/hotel'

@@ -251,7 +251,7 @@
             label="Installment"
             density="compact"
             required
-            :color="colors.darkBlue"
+            :color="colors.navyBlue"
           />
         </v-col>
         <v-spacer/>
@@ -269,9 +269,8 @@
             </h5>
           </div>
           <v-btn
-            color="#87CEEB"
+            :color="colors.mintGreen"
             width="100px"
-            style="color: white"
             elevation="0"
             type="submit"
           >
@@ -305,7 +304,7 @@ export default defineComponent({
   },
   emits: ['finished'],
   setup () {
-    const colors = useColors()
+    const { colors } = useColors()
     const { addReservation } = useBookingStore()
 
     return {
