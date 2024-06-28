@@ -271,7 +271,7 @@
             elevation="0"
             type="submit"
           >
-            book
+            Booking
           </v-btn>
         </v-col>
       </v-row>

@@ -46,7 +46,7 @@
         scale: 0;
         left: -30px;
         top: 10px;
-        transition: 1.0s;
+        transition: 0.5s;
         color: $mint-green;
       }
     }
@@ -57,12 +57,12 @@
       .icon {
         position: absolute;
         scale: 1.5;
-        left: 130px;
+        left: 140px;
         top: 10px;
         transform: rotate(90deg);
         scale: 1.5;
         color: $white;
-        transition: 1.0s ease-in-out;
+        transition: 0.5s ease-in-out;
       }
     }
   }
