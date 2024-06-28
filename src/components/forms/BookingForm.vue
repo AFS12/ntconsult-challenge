@@ -1,5 +1,9 @@
 <template>
-  <v-form class="booking-form">
+  <v-form
+    class="booking-form"
+    ref="form"
+    @submit.prevent="submit"
+  >
     <CustomCard class="user-details">
       <h3>
         <v-icon>mdi-account-box</v-icon>
@@ -277,12 +281,21 @@
       </v-row>
     </CustomCard>
   </v-form>
+  <v-snackbar
+    v-model="completedSubmit"
+    timeout="3000"
+    color="success"
+    @update:modelValue="!completedSubmit ? $router.push({ name: 'home' }) : null"
+  >
+    your reservation was made successfully, returning to home
+  </v-snackbar>
 </template>
 
 <script lang="ts">
 import CustomCard from '../shared/CustomCard.vue'
 import { defineComponent, PropType } from 'vue'
 import { useColors } from '@/composables/useColors'
+import { useBookingStore } from '@/stores/bookingStore'
 import { Hotel } from '@/types/hotel'
 
 export default defineComponent({
@@ -290,11 +303,14 @@ export default defineComponent({
   components: {
     CustomCard,
   },
+  emits: ['finished'],
   setup () {
     const colors = useColors()
+    const { addReservation } = useBookingStore()
 
     return {
       colors,
+      addReservation,
     }
   },
   props: {
@@ -306,6 +322,10 @@ export default defineComponent({
   data() {
     return {
       form: {
+        hotel: {
+          name: this.hotel.hotel_name,
+          id: this.hotel.id,
+        },
         user: {
           name: '',
           lastName: '',
@@ -327,6 +347,7 @@ export default defineComponent({
           installment: null,
         },
       },
+      completedSubmit: false,
       rules: [
         (v: string) => !!v || 'Field is required',
       ],
@@ -352,6 +373,18 @@ export default defineComponent({
       const endDate = new Date(this.form.accommodation.dates[1]).getTime()
       const diffTime = Math.abs(endDate - startDate)
       return Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+    },
+  },
+  methods: {
+    async submit() {
+      const formRef = this.$refs.form as { validate: () => Promise<{ valid: boolean }> }
+      const { valid } = await formRef.validate()
+      if (!valid) {
+        return
+      }
+      await this.addReservation(this.form)
+      this.completedSubmit = true
+      this.$emit('finished')
     },
   },
 })

@@ -1,28 +1,34 @@
 import { defineStore } from 'pinia'
+import { Reservation } from '@/types/reservation'
 
 export const useBookingStore = defineStore('useBookingStore', {
   state: () => ({
-    searchForm: {
-      location: 'new york',
-      dates: [] as string[],
-      guests: 1,
-      rooms: 1,
-    },
+    reservations: [] as Reservation[],
+    idCount: 0,
   }),
   actions: {
-    setSearchForm(data: { location: string; dates: string[]; guests: number, rooms: number }) {
-      this.searchForm = data
-    },
-    clearSearchForm() {
-      this.searchForm = {
-        location: 'new york',
-        dates: [] as string[],
-        guests: 1,
-        rooms: 1,
+    async addReservation(reservation: object) {
+      this.idCount += 1
+      const reservationWithId = {
+        ...reservation,
+        id: this.idCount.toString(),
+        status: 'pending',
       }
+      setTimeout(() => {
+        this.reservations.push(reservationWithId as Reservation)
+      }, 4000)
+      this.timedStatusChange(reservationWithId.id)
     },
-    getSearchForm() {
-      return this.searchForm
+    timedStatusChange(id: string) {
+      setTimeout(() => {
+        const reservation = this.reservations.find(reservation => reservation.id === id)
+        if (reservation) {
+          reservation.status = 'confirmed'
+        }
+      }, 10000)
+    },
+    getReservations() {
+      return this.reservations
     },
   },
 })

@@ -140,7 +140,10 @@
             <v-col
               cols="12"
             >
-              <BookingForm :hotel="hotel"/>
+              <BookingForm
+                :hotel="hotel"
+                @finished="booking = false"
+              />
             </v-col>
           </v-row>
         </v-expand-transition>
