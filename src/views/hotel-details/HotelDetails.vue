@@ -115,7 +115,7 @@
               width="200px"
               @click="booking = true"
             >
-              Book
+              Booking
               <v-icon class="icon">
                 mdi-airplane
               </v-icon>
@@ -128,7 +128,7 @@
               width="200px"
               @click="booking = false"
             >
-              Cancel Book
+              Cancel booking
             </v-btn>
           </v-col>
         </v-row>
@@ -140,7 +140,10 @@
             <v-col
               cols="12"
             >
-              <BookingForm :hotel="hotel"/>
+              <BookingForm
+                :hotel="hotel"
+                @finished="booking = false"
+              />
             </v-col>
           </v-row>
         </v-expand-transition>

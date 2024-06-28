@@ -15,6 +15,7 @@
       :key="hotel.id"
       :hotel="hotel"
       v-show="hotels.length > 0"
+      @click="toHotelDetails(hotel.id)"
     />
     <HotelCardSkeleton
       v-show="hotels.length === 0"
@@ -79,6 +80,9 @@ export default defineComponent({
           behavior: 'smooth',
         })
       }
+    },
+    toHotelDetails (id: number) {
+      this.$router.push({ name: 'hotelDetails', params: { id }})
     },
   },
 })
